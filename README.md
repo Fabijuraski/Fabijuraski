@@ -1,7 +1,30 @@
 
 ##Olá eu sou Fabi Juraski
- `git clone https://github.com/rafaballerini/GitTutorial.git`
-<img src="https://media.discordapp.net/attachments/812313742192279612/836823564513705994/unknown.png">
+name: Generate Datas
+
+on:
+  schedule: # execute every 12 hours
+    - cron: "* */12 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Jobs to update datas
+    runs-on: ubuntu-latest
+    steps:
+      # Snake Animation
+      - uses: Platane/snk@master
+        id: snake-gif
+        with:
+          github_user_name: Fabi Juraski
+          svg_out_path: dist/github-contribution-grid-snake.svg
+
+      - uses: crazy-max/ghaction-github-pages@v2.1.3
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 <!--
 **Fabijuraski/Fabijuraski** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
